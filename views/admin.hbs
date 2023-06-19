@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vegetable Price Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: skyblue;
+      color: darkgreen;
+    }
+
+    .vegetable-image {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="mt-4">Vegetable Price Dashboard</h1>
+
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h2>Vegetable List</h2>
+        {{delmsg}}
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Vegetable</th>
+              <th>Current Price</th>
+              <th>Category</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="vegetableList">
+            {{#each tableData}}
+
+            <tr>
+              <td><img src="{{imagePath}}" alt="Carrot" class="vegetable-image"></td>
+              <td>{{Name}}</td>
+              <td>Rs. {{Price}}</td>
+              <td>{{Category}}</td>
+              <td style="display: flex;justify-content: space-between;">
+                <button class="btn btn-sm btn-primary" onclick="editVegetable('{{Name}}','{{Price}}','{{Category}}')"
+                  type="submit">Edit</button>
+
+                <form method="POST" action="/delete">
+                  <input type="hidden" value="{{Name}}" name="deleteName" />
+
+                  <button class="btn btn-sm btn-primary" value="{{Name}}" type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {{/each}}
+
+          </tbody>
+        </table>
+      </div>
+
+
+      <div class="col-md-6">
+        <h2>Edit Vegetable</h2>
+        <form id="vegetableForm" action="/edit" method="POST">
+          <div class="mb-3">
+            <label for="vegetableName" class="form-label">Vegetable Name</label>
+            <input type="text" class="form-control" id="vegetableName" required name="vegName">
+          </div>
+          <div class="mb-3">
+            <label for="vegetablePrice" class="form-label">Price</label>
+            <input type="number" class="form-control" id="vegetablePrice" step="0.01" required name="vegPrice">
+          </div>
+          <div class="mb-3">
+            <label for="vegetableCategory" class="form-label">Category</label>
+            <select class="form-control" id="vegetableCategory" required name="category">
+              <option value="vegetable">Vegetable</option>
+              <option value="fruits">Fruits</option>
+              <option value="spices">Spices</option>
+              <option value="others">Others</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+      </div>
+    </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h2>Add Vegetable</h2>
+      {{#if msg}}
+      {{msg}}
+      {{/if}}
+      <form id="addVegetableForm" action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="newVegetableName" class="form-label">Vegetable Name</label>
+          <input type="text" class="form-control" id="newVegetableName" required name="name">
+        </div>
+        <div class="mb-3">
+          <label for="newVegetablePrice" class="form-label">Price</label>
+          <input type="number" class="form-control" id="newVegetablePrice" step="0.01" required name="price">
+        </div>
+        <div class="mb-3">
+          <label for="newVegetableCategory" class="form-label">Category</label>
+          <select class="form-control" id="newVegetableCategory" required name="category">
+            <option value="vegetable">Vegetable</option>
+            <option value="fruits">Fruits</option>
+            <option value="spices">Spices</option>
+            <option value="others">Others</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="newVegetableImage" class="form-label">Image</label>
+          <input type="file" class="form-control" id="newVegetableImage" accept="image/*" name="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Vegetable</button>
+        <input type="hidden" name="imagePath" id="imagePath">
+
+      </form>
+    </div>
+  </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Function to handle editing a vegetable
+    function editVegetable(name, price, category) {
+      console.log('edit')
+      document.getElementById('vegetableName').value = name;
+      document.getElementById('vegetablePrice').value = price;
+      document.getElementById('vegetableCategory').value = category
+      // Reset the file input
+
+    }
+
+    // Function to handle submitting the vegetable form
+   // document.getElementById('vegetableForm').addEventListener('submit', function(event) {
+   //   event.preventDefault();
+    //  var name = document.getElementById('vegetableName').value;
+     // var price = document.getElementById('vegetablePrice').value;
+    //  var category = document.getElementById('vegetableCategory').value;
+     // var image = document.getElementById('vegetableImage').files[0];
+
+      //var reader = new FileReader();
+      //reader.onload = function(event) {
+      //  var imageUrl = event.target.result;
+
+        // Update the vegetable details in the table
+     //   var row = document.querySelector('#vegetableList tr.selected');
+      //  row.cells[0].innerHTML = '<img src="' + imageUrl + '" alt="' + name + '" class="vegetable-image">';
+      //  row.cells[1].innerHTML = name;
+       // row.cells[2].innerHTML = 'Rs. ' + price;
+//row.cells[3].innerHTML = category;
+
+        // Reset the form fields
+        //document.getElementById('vegetableName').value = '';
+       // document.getElementById('vegetablePrice').value = '';
+       // document.getElementById('vegetableCategory').value = '';
+       // document.getElementById('vegetableImage').value = '';
+      //};
+//reader.readAsDataURL(image);
+    //});
+
+   // Function to handle adding a new vegetable
+  //  document.getElementById('addVegetableForm').addEventListener('submit', function(event) {
+    //  event.preventDefault();
+    //  var name = document.getElementById('newVegetableName').value;
+     // var price = document.getElementById('newVegetablePrice').value;
+      //var category = document.getElementById('newVegetableCategory').value;
+      //var image = document.getElementById('newVegetableImage').files[0];
+
+   //   var reader = new FileReader();
+//reader.onload = function(event) {
+       // var imageUrl = event.target.result;
+
+        // Append new row to the table
+     //   var tableRef = document.getElementById('vegetableList');
+      //  var newRow = tableRef.insertRow();
+
+      //  var imageCell = newRow.insertCell();
+      //  var img = document.createElement('img');
+      //  img.src = imageUrl;
+      //  img.alt = name;
+      //  img.className = 'vegetable-image';
+      //  imageCell.appendChild(img);
+
+  </script>
+</body>
+
+</html>

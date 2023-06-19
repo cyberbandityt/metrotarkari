@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <link rel="stylesheet" href="site/fontawesome/all.css">
+
+  <link rel="stylesheet" href="site/bootstrap/bootstrap.css">
+
+  <link rel="stylesheet" href="site/css/category.css">
+
+  <section id="top-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-lg-8 col-xl-8 col-sm-12 col-12 text-sm-center">
+          <div class="top-header-contact">
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6">
+                <i class="fa-solid fa-location-dot icon"></i> Pokhara - 8, Sirjana Chowk
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6">
+                <i class="fa-solid fa-phone icon"></i> +977 061-538358
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12 col-12 text-end header-text-sm-hide">
+          <div class="top-header-social-icon">
+            <a href="">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="top-header-navbar">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="">
+          <img src="site/image/metrologo.png" alt="logo" class="img-fluid">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto text-center">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Category
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <div class="top-of-category">
+    <div class="left">
+      <p>
+      <h2>"The greatest wealth is health."</h2>
+      </p>
+      <p>
+      <h4>Welcome to category page ! Here you can find wide range of our product</h4>
+      </p>
+      <h3>Your One-Stop Destination for All Things Vegetables: Elevate Your Cooking and Embrace the Art of Healthy
+        Eating</h3>
+      <button><a href="">Shop Now</a></button>
+    </div>
+    <div class="image">
+      <img src="site/image/bot.png" alt="vegetable image">
+    </div>
+  </div>
+  <section class="main-category">
+    <div class="category-title">
+      <h2>Category</h2>
+    </div>
+
+    <div class="category">
+      <div class="category-item">
+        <div class="image">
+          <img src="site/image/vegetable.jpg" alt="">
+        </div>
+        <div class="image-title">
+          <h2><a href="#vegetable">Vegetable</a></h2>
+        </div>
+      </div>
+      <div class="category-item">
+        <div class="image">
+          <img src="site/image/fruit.jpg" alt="local">
+        </div>
+        <div class="image-title">
+          <h2><a href="#fruit">Fruit</a></h2>
+        </div>
+      </div>
+
+      <div class="category-item">
+        <div class="image">
+          <img src="site/image/spices.jpg" alt="">
+        </div>
+        <div class="image-title">
+          <h2><a href="#spices">Spices</a></h2>
+        </div>
+      </div>
+
+      <div class="category-item">
+        <div class="image">
+          <img src="site/image/other.jpg" alt="">
+        </div>
+        <div class="image-title">
+          <h2><a href="#other-items">Other items</a></h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="product-section" id="vegetable">
+      <div class="title" style="text-align:center;">
+        <h2><span>Vege</span>table</h2>
+      </div>
+      <div class="product-detail">
+        {{#each veg}}
+        <div class="product">
+          <div class="image">
+            <div class="product-title">
+              {{Name}}
+            </div>
+            <img src="{{imagePath}}" alt="{{Name}}">
+          </div>
+          <div class="content">
+            <div class="product-top">
+              <h2 style="text-align: center;">100% Fresh</h2>
+            </div>
+            <h1><span>Rs.{{Price}}</span></h1>
+            <h3>Category: Vegetable</h3>
+            <div class="button">
+              <button>View Detail</button>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="product-section" id="fruit">
+      <div class="title" style="text-align:center;">
+        <h2><span>Fru</span>it</h2>
+      </div>
+      <div class="product-detail">
+        {{#each fru}}
+        <div class="product">
+          <div class="image">
+            <div class="product-title">
+              {{Name}}
+            </div>
+            <img src="{{imagePath}}" alt="{{Name}}">
+          </div>
+          <div class="content">
+            <div class="product-top">
+              <h2 style="text-align: center;">100% Fresh</h2>
+            </div>
+            <h1><span>Rs.{{Price}}</span></h1>
+            <h3>Category: Fruit</h3>
+            <div class="button">
+              <button>View Detail</button>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="product-section" id="spices">
+      <div class="title" style="text-align:center;">
+        <h2><span>Spi</span>ces</h2>
+      </div>
+      <div class="product-detail">
+        {{#each spice}}
+        <div class="product">
+          <div class="image">
+            <div class="product-title">
+              {{Name}}
+            </div>
+            <img src="{{imagePath}}" alt="{{Name}}">
+          </div>
+          <div class="content">
+            <div class="product-top">
+              <h2 style="text-align: center;">100% Fresh</h2>
+            </div>
+            <h1><span>Rs.{{Price}}</span></h1>
+            <h3>Category: Spices</h3>
+            <div class="button">
+              <button>View Detail</button>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="product-section" id="other-items">
+      <div class="title" style="text-align:center;">
+        <h2><span>Other</span>-items</h2>
+      </div>
+      <div class="product-detail">
+        {{#each others}}
+        <div class="product">
+          <div class="image">
+            <div class="product-title">
+              {{Name}}
+            </div>
+            <img src="{{imagePath}}" alt="{{Name}}">
+          </div>
+          <div class="content">
+            <div class="product-top">
+              <h2 style="text-align: center;">100% Fresh</h2>
+            </div>
+            <h1><span>Rs.{{Price}}</span></h1>
+            <h3>Category: Other-Items</h3>
+            <div class="button">
+              <button>View Detail</button>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+        
+      </div>
+    </div>
+  </section>
+
+
+  <section id="footer-box">
+    <div class="footer">
+      <h2>Contact Details</h2>
+      <h3>Address:</h3>
+      Metro Veggies
+      <p>Masbar-7, Pokhara, Nepal</p>
+      <p>Tel: +977 6183496</p>
+      <hr>
+      <div class="foot-last">
+        <b>© 2023 Team Motherland. All rights reserved.</b>
+      </div>
+    </div>
+  </section>
+
+  <script src="site/jquery/jquery.js"></script>
+
+  <script src="site/bootstrap/proper.js"></script>
+
+  <script src="site/bootstrap/bootstrap.js"></script>
+
+
+  <script src="site/fontawesome/all.js"></script>
+
+  <script src="site/js/script.js"></script>
+
+</body>
+
+</html>
